@@ -17,8 +17,8 @@ public class BST {
         root = null;
     }
 
-    // call recursive function
-    public Node findLCA(int key1, int key2) { return findLCA(root, key1, key2); }
+    // call recursive function, then return the key of the LCA found
+    public int findLCA(int key1, int key2) { return findLCA(root, key1, key2).key; }
 
     // recursive function
     private Node findLCA(Node searchNode, int key1, int key2) {
