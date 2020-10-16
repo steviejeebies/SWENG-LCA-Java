@@ -51,4 +51,21 @@ public class BST <T extends Comparable<T>>{
             }
         }
     }
+
+    // method required for testing. Shows that an added value is actually present on the BST
+    public Node findNode(T value) {
+        if (root == null) return null;
+        Node searchNode = root;
+        while (true) {  // if the same number is entered twice, it will not create a new node for the repetition
+            if (value.equals(searchNode.key)) return searchNode;     // break if current node has the same value
+            if (value.compareTo(searchNode.key) < 0) {
+                if (searchNode.leftChild == null) return null;
+                else searchNode = searchNode.leftChild;    // if left child present and not equal, search left branch
+            }
+            else {    // if (value > searchNode.key)
+                if (searchNode.rightChild == null) return null;
+                else searchNode = searchNode.rightChild;   // if left child present and not equal, search left branch
+            }
+        }
+    }
 }
