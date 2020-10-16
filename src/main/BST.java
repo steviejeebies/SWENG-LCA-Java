@@ -1,9 +1,9 @@
-public class BST {
+public class BST <T extends Comparable<T>>{
     class Node {
-        int key;
+        T key;
         Node leftChild, rightChild;
 
-        public Node(int value) {
+        public Node(T value) {
             key = value;
             leftChild = null;
             rightChild = null;
@@ -13,15 +13,16 @@ public class BST {
     // root of our tree
     Node root;
 
+    // Constructor for BST
     public BST() {
         root = null;
     }
 
     // call recursive function, then return the key of the LCA found
-    public int findLCA(int key1, int key2) { return findLCA(root, key1, key2).key; }
+    public T findLCA(T key1, T key2) { return findLCA(root, key1, key2).key; }
 
     // recursive function
-    private Node findLCA(Node searchNode, int key1, int key2) {
+    private Node findLCA(Node searchNode, T key1, T key2) {
         if (searchNode == null) return null;        // if no root node, return null
         if (searchNode.key == key1 || searchNode.key == key2) return searchNode;    // if key matches search node,
                                                                                     // return search node
@@ -32,12 +33,12 @@ public class BST {
         return (leftSearch != null) ? leftSearch : rightSearch;
     }
 
-    public void addNode(int value) {
+    public void addNode(T value) {
         if (root == null) root = new Node(value);
         Node searchNode = root;
         while (true) {  // if the same number is entered twice, it will not create a new node for the repetition
-            if (value == searchNode.key) break;     // break if current node has the same value
-            if (value < searchNode.key) {
+            if (value.equals(searchNode.key)) break;     // break if current node has the same value
+            if (value.compareTo(searchNode.key) < 0) {
                 if (searchNode.leftChild == null) {
                     searchNode.leftChild = new Node(value);  // create new left node if no left node, and breaks
                     break;
