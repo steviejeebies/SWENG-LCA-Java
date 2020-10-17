@@ -1,3 +1,5 @@
+// 100% code coverage
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,6 +14,7 @@ public class BSTTest {
         stringBST.addNode("string a");
         stringBST.addNode("string b");
         stringBST.addNode("string c");
+        stringBST.addNode("string c");  // repeat value added to BST
 
         assertEquals(
                 "'string a' is present on BST",
@@ -32,8 +35,6 @@ public class BSTTest {
                 "'string d' is NOT present on BST",
                 stringBST.findNode("string d")
         );
-
-
     }
 
     @Test
@@ -67,9 +68,27 @@ public class BSTTest {
     }
 
     @Test
+    public void findNodeTest() {
+        BST<Integer> intBST = new BST<>();
+        // testing trying to find a node when no nodes are on BST
+        assertNull(intBST.findNode(1));
+
+        // adding the node of int 1 to the tree, then attempting to find this node
+        intBST.addNode(1);
+        intBST.addNode(5);
+        intBST.addNode(3);
+        assertEquals(1, (int) intBST.findNode(1).key);
+        assertEquals(5, (int) intBST.findNode(5).key);
+        assertEquals(3, (int) intBST.findNode(3).key);
+        assertNull(intBST.findNode(2));
+        assertNull(intBST.findNode(4));
+    }
+
+    @Test
     public void findLCA() {
         // Testing with integer tree
         BST<Integer> ourTree = new BST<>();
+        assertNull("LCA of an empty tree should be null", ourTree.findLCA(1,2));
         int[] inputValues = {15, 14, 28, 22, 9, 12, 30, 29, 4, 7, 13};
         for (int i : inputValues) ourTree.addNode(i);
         // Testing on the following tree https://i.ibb.co/D80Sdsx/Untitled-1.png
@@ -79,6 +98,7 @@ public class BSTTest {
         assertEquals("LCA of 15 4 should be 15", 15, (int) ourTree.findLCA(15, 4));
         assertEquals("LCA of 30 29 should be 30", 30, (int) ourTree.findLCA(30, 29));
         assertEquals("LCA of 7 13 should be 9", 9, (int) ourTree.findLCA(7, 13));
+        assertEquals("LCA of 30 99 (99 not on tree) should be 30", 30, (int) ourTree.findLCA(30, 99));
 
 
     }

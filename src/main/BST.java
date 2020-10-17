@@ -19,7 +19,10 @@ public class BST <T extends Comparable<T>>{
     }
 
     // call recursive function, then return the key of the LCA found
-    public T findLCA(T key1, T key2) { return findLCA(root, key1, key2).key; }
+    public T findLCA(T key1, T key2) {
+        Node foundNode = findLCA(root, key1, key2);
+        return (foundNode != null) ? foundNode.key : null;
+    }
 
     // recursive function
     private Node findLCA(Node searchNode, T key1, T key2) {
@@ -58,7 +61,7 @@ public class BST <T extends Comparable<T>>{
         Node searchNode = root;
         while (true) {  // if the same number is entered twice, it will not create a new node for the repetition
             if (value.equals(searchNode.key)) return searchNode;     // break if current node has the same value
-            if (value.compareTo(searchNode.key) < 0) {
+            else if (value.compareTo(searchNode.key) < 0) {
                 if (searchNode.leftChild == null) return null;
                 else searchNode = searchNode.leftChild;    // if left child present and not equal, search left branch
             }
