@@ -1,4 +1,4 @@
-# Lowest Common Ancestor on BST Tree (Java)
+# Lowest Common Ancestor on Binary Search Tree (Java)
 * All tests passing
 * Code coverage 100%
 
