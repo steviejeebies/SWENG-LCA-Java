@@ -39,8 +39,7 @@ public class BST <T extends Comparable<T>>{
     public void addNode(T value) {
         if (root == null) root = new Node(value);
         Node searchNode = root;
-        while (true) {  // if the same number is entered twice, it will not create a new node for the repetition
-            if (value.equals(searchNode.key)) break;     // break if current node has the same value
+        while (!value.equals(searchNode.key)) {
             if (value.compareTo(searchNode.key) < 0) {
                 if (searchNode.leftChild == null) {
                     searchNode.leftChild = new Node(value);  // create new left node if no left node, and breaks
@@ -59,9 +58,8 @@ public class BST <T extends Comparable<T>>{
     public Node findNode(T value) {
         if (root == null) return null;
         Node searchNode = root;
-        while (true) {  // if the same number is entered twice, it will not create a new node for the repetition
-            if (value.equals(searchNode.key)) return searchNode;     // break if current node has the same value
-            else if (value.compareTo(searchNode.key) < 0) {
+        while (!value.equals(searchNode.key)) {
+            if (value.compareTo(searchNode.key) < 0) {
                 if (searchNode.leftChild == null) return null;
                 else searchNode = searchNode.leftChild;    // if left child present and not equal, search left branch
             }
@@ -70,5 +68,6 @@ public class BST <T extends Comparable<T>>{
                 else searchNode = searchNode.rightChild;   // if left child present and not equal, search left branch
             }
         }
+        return searchNode; // return if current node has the same value
     }
 }

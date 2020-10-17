@@ -99,7 +99,5 @@ public class BSTTest {
         assertEquals("LCA of 30 29 should be 30", 30, (int) ourTree.findLCA(30, 29));
         assertEquals("LCA of 7 13 should be 9", 9, (int) ourTree.findLCA(7, 13));
         assertEquals("LCA of 30 99 (99 not on tree) should be 30", 30, (int) ourTree.findLCA(30, 99));
-
-
     }
 }
