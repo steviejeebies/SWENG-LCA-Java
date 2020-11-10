@@ -19,33 +19,37 @@ public class AcyclicGraph {
     // have been added since the last time we called LCA, then we don't need to check if it is acyclic
     // again.
 
-    void addEdge(int u, int v, int weight) {
+    void addEdge(int u, int v) {
         this.adjacencyList[u].add(v);
         this.newEdgeAdded = true;
     }
 
-    // To check if the graph is Acyclic
+    // This function is used to test if the graph is Acyclic
     void topSort() {
-        Stack<Integer> stack = new Stack<Integer>();
-
         // Mark all the vertices as not visited
         boolean visited[] = new boolean[this.sizeGraph];
         for (int i = 0; i < this.sizeGraph; i++)
             visited[i] = false;
 
         for (int i = 0; i < this.sizeGraph; i++)
-            if (visited[i] == false)
-                topSortRecursive(i, visited);
+            if (visited[i] == false) {
+                boolean acyclicCheck [] = new boolean [this.sizeGraph];
+                topSortRecursive(i, visited, acyclicCheck);
+            }
     }
 
-    void topSortRecursive(int thisVertex, boolean visited[]) {
+    void topSortRecursive(int thisVertex, boolean visited [], boolean acyclicCheck []) {
         visited[thisVertex] = true;
+        acyclicCheck[thisVertex] = true;
         int nextVertex;
         int sizeAdjacencyList = this.adjacencyList[thisVertex].size();
 
         for(int i = 0; i < sizeAdjacencyList; i++) {
             nextVertex = (int) this.adjacencyList[thisVertex].get(i);
-            if (!visited[i]) topSortRecursive(i, visited);
+            if(acyclicCheck[nextVertex])
+                throw new IllegalArgumentException();  // Cycle found, graph is not valid!
+            if (!visited[nextVertex])
+                topSortRecursive(nextVertex, visited, acyclicCheck);
         }
     }
 
