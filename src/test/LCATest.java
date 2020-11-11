@@ -203,4 +203,19 @@ public class LCATest {
         assertArrayEquals(graphC.vertices[4].adjacencyList.toArray(), adjacentTo4C);
         assertArrayEquals(graphC.vertices[5].adjacencyList.toArray(), adjacentTo5C);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testAcyclicCheck() {
+        AcyclicGraph graphC = new AcyclicGraph(6, false);
+        // acyclic graph
+        graphC.addEdge(5, 0);
+        graphC.addEdge(5, 2);
+        graphC.addEdge(2, 3);
+        graphC.addEdge(3, 1);
+        graphC.addEdge(4, 1);
+        graphC.addEdge(4, 0);
+        // adding edge that makes it cyclic
+        graphC.addEdge(1, 2);
+        graphC.topSort();
+    }
 }

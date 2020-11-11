@@ -11,7 +11,10 @@ public class Main {
 //        System.out.println("LCA of 30 29: " + ourTree.findLCA(30, 29));
 //        System.out.println("LCA of 7 13: " + ourTree.findLCA(7, 13));
 //        System.out.println("LCA of 33, 30: " + ourTree.findLCA(33, 30));
+        // Image of graph: https://ibb.co/y8dVc3v ***all values on graph are value-1****
+        // NOTE ***ALL VALUES ON GRAPH ARE VALUE-1 IN THIS PROGRAM****
 
+        System.out.println("Done!");
 
     }
 }
