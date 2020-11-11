@@ -12,26 +12,6 @@ public class Main {
 //        System.out.println("LCA of 7 13: " + ourTree.findLCA(7, 13));
 //        System.out.println("LCA of 33, 30: " + ourTree.findLCA(33, 30));
 
-        AcyclicGraph myGraph = new AcyclicGraph(6);
-//        FOR FUTURE REFERENCE - THIS IS A VALID ACYCLIC GRAPH
-        myGraph.addEdge(5, 0);
-        myGraph.addEdge(5, 2);
-        myGraph.addEdge(2, 3);
-        myGraph.addEdge(3, 1);
-        myGraph.addEdge(4, 1);
-        myGraph.addEdge(4, 0);
 
-//        THIS IS AN *INVALID* ACYCLIC GRAPH
-//        myGraph.addEdge(5, 0);
-//        myGraph.addEdge(5, 2);
-//        myGraph.addEdge(2, 3);
-//        myGraph.addEdge(3, 1);
-//        myGraph.addEdge(4, 1);
-//        myGraph.addEdge(4, 0);
-//        myGraph.addEdge(1, 2);
-
-        myGraph.topSort();
-
-        System.out.println("Done!");
     }
 }
