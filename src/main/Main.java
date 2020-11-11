@@ -2,21 +2,6 @@ import static org.junit.Assert.assertArrayEquals;
 
 public class Main {
     public static void main(String[] args) {
-//        // BST will look like this: https://i.ibb.co/D80Sdsx/Untitled-1.png
-//        BST<Integer> ourTree = new BST<>();
-//        int[] inputValues = {15, 14, 28, 22, 9, 12, 30, 29, 4, 7, 13};
-//        for (int i : inputValues) ourTree.addNode(i);
-//        System.out.println("LCA of 12 4: " + ourTree.findLCA(12, 4));
-//        System.out.println("LCA of 7 4: " + ourTree.findLCA(7, 4));
-//        System.out.println("LCA of 14 22: " + ourTree.findLCA(14, 22));
-//        System.out.println("LCA of 15 4: " + ourTree.findLCA(15, 4));
-//        System.out.println("LCA of 30 29: " + ourTree.findLCA(30, 29));
-//        System.out.println("LCA of 7 13: " + ourTree.findLCA(7, 13));
-//        System.out.println("LCA of 33, 30: " + ourTree.findLCA(33, 30));
-        // Image of graph: https://ibb.co/y8dVc3v ***all values on graph are value-1****
-        // NOTE ***ALL VALUES ON GRAPH ARE VALUE-1 IN THIS PROGRAM****
-
-
-
+        System.out.println("Done!");
     }
 }

@@ -339,4 +339,43 @@ public class LCATest {
         assertArrayEquals(graphB.findLCA(new int[]{12, 9, 0}), new int[]{0});
         assertArrayEquals(graphB.findLCA(new int[]{0, 1, 2}), new int[]{0});
     }
+
+    @Test
+    public void testLCAGraphC_2Args() {
+        // Image of graph: https://ibb.co/7b5VWfX
+        AcyclicGraph graphC = new AcyclicGraph(6, false);
+        graphC.addEdge(5, 0);
+        graphC.addEdge(5, 2);
+        graphC.addEdge(2, 3);
+        graphC.addEdge(3, 1);
+        graphC.addEdge(4, 1);
+        graphC.addEdge(4, 0);
+                                        // function call  // expected result
+        assertArrayEquals(graphC.findLCA(new int[]{0, 1}), new int[]{4,5}); // Note: more than 1 LCA returned here
+        assertArrayEquals(graphC.findLCA(new int[]{3, 1}), new int[]{3});
+        assertArrayEquals(graphC.findLCA(new int[]{1, 3}), new int[]{3});
+        assertArrayEquals(graphC.findLCA(new int[]{2, 0}), new int[]{5});
+        assertArrayEquals(graphC.findLCA(new int[]{3, 4}), new int[]{});    // no LCA, don't share ancestors
+        assertArrayEquals(graphC.findLCA(new int[]{2, 4}), new int[]{});
+    }
+
+    @Test
+    public void testLCAGraphC_3Args() {
+        // Image of graph: https://ibb.co/7b5VWfX
+        AcyclicGraph graphC = new AcyclicGraph(6, false);
+        graphC.addEdge(5, 0);
+        graphC.addEdge(5, 2);
+        graphC.addEdge(2, 3);
+        graphC.addEdge(3, 1);
+        graphC.addEdge(4, 1);
+        graphC.addEdge(4, 0);
+                                        // function call  // expected result
+        assertArrayEquals(graphC.findLCA(new int[]{1, 3, 2}), new int[]{2});
+        assertArrayEquals(graphC.findLCA(new int[]{3, 1, 0}), new int[]{5});
+        assertArrayEquals(graphC.findLCA(new int[]{0, 4, 1}), new int[]{4});
+        assertArrayEquals(graphC.findLCA(new int[]{5, 5, 5}), new int[]{5});
+        assertArrayEquals(graphC.findLCA(new int[]{3, 1, 4}), new int[]{});
+        assertArrayEquals(graphC.findLCA(new int[]{1, 1, 3}), new int[]{3});
+
+    }
 }
