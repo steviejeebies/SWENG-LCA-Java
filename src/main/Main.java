@@ -30,12 +30,13 @@ public class Main {
 //        myGraph.addEdge(1, 2);
 
         AcyclicGraph myGraph = new AcyclicGraph(6);
-        myGraph.addEdge(5, 0);
-        myGraph.addEdge(5, 2);
-        myGraph.addEdge(2, 3);
-        myGraph.addEdge(3, 1);
-        myGraph.addEdge(4, 1);
-        myGraph.addEdge(4, 0);
+        AcyclicGraph.Vertex[] result = myGraph.getVertices();
+//        myGraph.addEdge(5, 0);
+//        myGraph.addEdge(5, 2);
+//        myGraph.addEdge(2, 3);
+//        myGraph.addEdge(3, 1);
+//        myGraph.addEdge(4, 1);
+//        myGraph.addEdge(4, 0);
 
         System.out.println("Done!");
     }
