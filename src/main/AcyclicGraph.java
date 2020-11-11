@@ -117,7 +117,7 @@ public class AcyclicGraph {
         //  (ii) if the distance is the same as the current list of potential LCAs, we'll add it to the list.
         for(int i = 0; i < sizeGraph; i++) {
             if(shareAncestor(args, i)) {
-                int cmp = vertices[i].numAncestors - distanceFromRoot;
+                int cmp = distanceFromRoot - vertices[i].numAncestors;
                 if(cmp > 0) continue;   // this ancestor is closer to root that what we have, we can ignore it
                 if(cmp < 0) potentialLCAs = new LinkedList<>();    // clear list of current LCAs as they are closer to root
                 distanceFromRoot = vertices[i].numAncestors;

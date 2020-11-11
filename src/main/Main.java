@@ -1,3 +1,5 @@
+import static org.junit.Assert.assertArrayEquals;
+
 public class Main {
     public static void main(String[] args) {
 //        // BST will look like this: https://i.ibb.co/D80Sdsx/Untitled-1.png
@@ -14,7 +16,7 @@ public class Main {
         // Image of graph: https://ibb.co/y8dVc3v ***all values on graph are value-1****
         // NOTE ***ALL VALUES ON GRAPH ARE VALUE-1 IN THIS PROGRAM****
 
-        System.out.println("Done!");
+
 
     }
 }

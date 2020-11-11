@@ -116,19 +116,13 @@ public class LCATest {
         graphA.addEdge(4, 5);
 
         // These are what the above graph should produce for adjacent values
-        Object [] adjacentTo0A = {1};
-        Object [] adjacentTo1A = {2};
-        Object [] adjacentTo2A = {3};
-        Object [] adjacentTo3A = {4};
-        Object [] adjacentTo4A = {5};
-        Object [] adjacentTo5A = {};
 
-        assertArrayEquals(graphA.vertices[0].adjacencyList.toArray(), adjacentTo0A);
-        assertArrayEquals(graphA.vertices[1].adjacencyList.toArray(), adjacentTo1A);
-        assertArrayEquals(graphA.vertices[2].adjacencyList.toArray(), adjacentTo2A);
-        assertArrayEquals(graphA.vertices[3].adjacencyList.toArray(), adjacentTo3A);
-        assertArrayEquals(graphA.vertices[4].adjacencyList.toArray(), adjacentTo4A);
-        assertArrayEquals(graphA.vertices[5].adjacencyList.toArray(), adjacentTo5A);
+        assertArrayEquals(graphA.vertices[0].adjacencyList.toArray(), new Object[]{1});
+        assertArrayEquals(graphA.vertices[1].adjacencyList.toArray(), new Object[]{2});
+        assertArrayEquals(graphA.vertices[2].adjacencyList.toArray(), new Object[]{3});
+        assertArrayEquals(graphA.vertices[3].adjacencyList.toArray(), new Object[]{4});
+        assertArrayEquals(graphA.vertices[4].adjacencyList.toArray(), new Object[]{5});
+        assertArrayEquals(graphA.vertices[5].adjacencyList.toArray(), new Object[]{});
 
         // GRAPH B //
 
@@ -149,33 +143,20 @@ public class LCATest {
         graphB.addEdge(10, 11);
 
         // These are what the above graph should produce for adjacent values
-        Object [] adjacentTo0B = {1,2};
-        Object [] adjacentTo1B = {3};
-        Object [] adjacentTo2B = {4};
-        Object [] adjacentTo3B = {5};
-        Object [] adjacentTo4B = {6,7};
-        Object [] adjacentTo5B = {};
-        Object [] adjacentTo6B = {9};
-        Object [] adjacentTo7B = {};
-        Object [] adjacentTo8B = {};
-        Object [] adjacentTo9B = {8,12,10};
-        Object [] adjacentTo10B = {11};
-        Object [] adjacentTo11B = {};
-        Object [] adjacentTo12B = {};
 
-        assertArrayEquals(graphB.vertices[0].adjacencyList.toArray(), adjacentTo0B);
-        assertArrayEquals(graphB.vertices[1].adjacencyList.toArray(), adjacentTo1B);
-        assertArrayEquals(graphB.vertices[2].adjacencyList.toArray(), adjacentTo2B);
-        assertArrayEquals(graphB.vertices[3].adjacencyList.toArray(), adjacentTo3B);
-        assertArrayEquals(graphB.vertices[4].adjacencyList.toArray(), adjacentTo4B);
-        assertArrayEquals(graphB.vertices[5].adjacencyList.toArray(), adjacentTo5B);
-        assertArrayEquals(graphB.vertices[6].adjacencyList.toArray(), adjacentTo6B);
-        assertArrayEquals(graphB.vertices[7].adjacencyList.toArray(), adjacentTo7B);
-        assertArrayEquals(graphB.vertices[8].adjacencyList.toArray(), adjacentTo8B);
-        assertArrayEquals(graphB.vertices[9].adjacencyList.toArray(), adjacentTo9B);
-        assertArrayEquals(graphB.vertices[10].adjacencyList.toArray(), adjacentTo10B);
-        assertArrayEquals(graphB.vertices[11].adjacencyList.toArray(), adjacentTo11B);
-        assertArrayEquals(graphB.vertices[12].adjacencyList.toArray(), adjacentTo12B);
+        assertArrayEquals(graphB.vertices[0].adjacencyList.toArray(), new Object[]{1,2});
+        assertArrayEquals(graphB.vertices[1].adjacencyList.toArray(), new Object[]{3});
+        assertArrayEquals(graphB.vertices[2].adjacencyList.toArray(), new Object[]{4});
+        assertArrayEquals(graphB.vertices[3].adjacencyList.toArray(), new Object[]{5});
+        assertArrayEquals(graphB.vertices[4].adjacencyList.toArray(), new Object[]{6,7});
+        assertArrayEquals(graphB.vertices[5].adjacencyList.toArray(), new Object[]{});
+        assertArrayEquals(graphB.vertices[6].adjacencyList.toArray(), new Object[]{9});
+        assertArrayEquals(graphB.vertices[7].adjacencyList.toArray(), new Object[]{});
+        assertArrayEquals(graphB.vertices[8].adjacencyList.toArray(), new Object[]{});
+        assertArrayEquals(graphB.vertices[9].adjacencyList.toArray(), new Object[]{8,12,10});
+        assertArrayEquals(graphB.vertices[10].adjacencyList.toArray(), new Object[]{11});
+        assertArrayEquals(graphB.vertices[11].adjacencyList.toArray(), new Object[]{});
+        assertArrayEquals(graphB.vertices[12].adjacencyList.toArray(), new Object[]{});
 
         // GRAPH C //
 
@@ -189,19 +170,13 @@ public class LCATest {
         graphC.addEdge(4, 0);
 
         // These are what the above graph should produce for adjacent values
-        Object [] adjacentTo0C = {};
-        Object [] adjacentTo1C = {};
-        Object [] adjacentTo2C = {3};
-        Object [] adjacentTo3C = {1};
-        Object [] adjacentTo4C = {1,0};
-        Object [] adjacentTo5C = {0,2};
 
-        assertArrayEquals(graphC.vertices[0].adjacencyList.toArray(), adjacentTo0C);
-        assertArrayEquals(graphC.vertices[1].adjacencyList.toArray(), adjacentTo1C);
-        assertArrayEquals(graphC.vertices[2].adjacencyList.toArray(), adjacentTo2C);
-        assertArrayEquals(graphC.vertices[3].adjacencyList.toArray(), adjacentTo3C);
-        assertArrayEquals(graphC.vertices[4].adjacencyList.toArray(), adjacentTo4C);
-        assertArrayEquals(graphC.vertices[5].adjacencyList.toArray(), adjacentTo5C);
+        assertArrayEquals(graphC.vertices[0].adjacencyList.toArray(), new Object[]{});
+        assertArrayEquals(graphC.vertices[1].adjacencyList.toArray(), new Object[]{});
+        assertArrayEquals(graphC.vertices[2].adjacencyList.toArray(), new Object[]{3});
+        assertArrayEquals(graphC.vertices[3].adjacencyList.toArray(), new Object[]{1});
+        assertArrayEquals(graphC.vertices[4].adjacencyList.toArray(), new Object[]{1,0});
+        assertArrayEquals(graphC.vertices[5].adjacencyList.toArray(), new Object[]{0,2});
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -216,6 +191,7 @@ public class LCATest {
         graphC.addEdge(4, 0);
         // adding edge that makes it cyclic
         graphC.addEdge(1, 2);
+        // Calling topSort() should throw error as graph is not acyclic
         graphC.topSort();
     }
 
@@ -249,5 +225,118 @@ public class LCATest {
         graphC.findLCA(args);
         // findLCA() itself will check if the input arguments are valid. As they are not valid, an
         // IllegalArgumentException will be thrown
+    }
+
+    @Test
+    public void testLCAGraphA_2Args() {
+        // GRAPH A //
+
+        // Image of graph: https://ibb.co/bFSv7Rf
+        // (had to change numbers so they are sequential, as implementation
+        // doesn't support naming vertices random numbers)
+
+        AcyclicGraph graphA = new AcyclicGraph(6, false);
+        graphA.addEdge(0, 1);
+        graphA.addEdge(1, 2);
+        graphA.addEdge(2, 3);
+        graphA.addEdge(3, 4);
+        graphA.addEdge(4, 5);
+                                        // function call  // expected result
+        assertArrayEquals(graphA.findLCA(new int[]{0, 1}), new int[]{0});
+        assertArrayEquals(graphA.findLCA(new int[]{4, 3}), new int[]{3});
+        assertArrayEquals(graphA.findLCA(new int[]{0, 0}), new int[]{0});
+        assertArrayEquals(graphA.findLCA(new int[]{1, 5}), new int[]{1});
+        assertArrayEquals(graphA.findLCA(new int[]{0, 5}), new int[]{0});
+        assertArrayEquals(graphA.findLCA(new int[]{3, 3}), new int[]{3});
+    }
+
+    @Test
+    public void testLCAGraphA_3Args() {
+        // GRAPH A //
+
+        // Image of graph: https://ibb.co/bFSv7Rf
+        // (had to change numbers so they are sequential, as implementation
+        // doesn't support naming vertices random numbers)
+
+        AcyclicGraph graphA = new AcyclicGraph(6, false);
+        graphA.addEdge(0, 1);
+        graphA.addEdge(1, 2);
+        graphA.addEdge(2, 3);
+        graphA.addEdge(3, 4);
+        graphA.addEdge(4, 5);
+                                        // function call  // expected result
+        assertArrayEquals(graphA.findLCA(new int[]{3, 4, 5}), new int[]{3});
+        assertArrayEquals(graphA.findLCA(new int[]{5, 4, 3}), new int[]{3});
+        assertArrayEquals(graphA.findLCA(new int[]{0, 4, 5}), new int[]{0});
+        assertArrayEquals(graphA.findLCA(new int[]{1, 2, 2}), new int[]{1});
+        assertArrayEquals(graphA.findLCA(new int[]{5, 1, 4}), new int[]{1});
+    }
+
+    @Test
+    public void testLCAGraphB_2Args() {
+        // GRAPH B //
+
+        // Image of graph: https://ibb.co/y8dVc3v
+
+        AcyclicGraph graphB = new AcyclicGraph(13);
+        graphB.addEdge(0,1);
+        graphB.addEdge(0,2);
+        graphB.addEdge(1, 3);
+        graphB.addEdge(3, 5);
+        graphB.addEdge(2, 4);
+        graphB.addEdge(4, 6);
+        graphB.addEdge(4, 7);
+        graphB.addEdge(6, 9);
+        graphB.addEdge(9, 8);
+        graphB.addEdge(9, 12);
+        graphB.addEdge(9, 10);
+        graphB.addEdge(10, 11);
+
+        // NOTE: VALUE OF EACH NODE IN THE IMAGE IS VALUE-1 IN MY PROGRAM
+        // NOTE: VALUE OF EACH NODE IN THE IMAGE IS VALUE-1 IN MY PROGRAM
+        // NOTE: VALUE OF EACH NODE IN THE IMAGE IS VALUE-1 IN MY PROGRAM
+
+                                        // function call  // expected result
+        assertArrayEquals(graphB.findLCA(new int[]{12, 10}), new int[]{9});
+        assertArrayEquals(graphB.findLCA(new int[]{3, 2}), new int[]{0});
+        assertArrayEquals(graphB.findLCA(new int[]{12, 7}), new int[]{4});
+        assertArrayEquals(graphB.findLCA(new int[]{5, 11}), new int[]{0});
+        assertArrayEquals(graphB.findLCA(new int[]{5, 1}), new int[]{1});
+        assertArrayEquals(graphB.findLCA(new int[]{7, 2}), new int[]{2});
+        assertArrayEquals(graphB.findLCA(new int[]{12, 11}), new int[]{9});
+    }
+
+    @Test
+    public void testLCAGraphB_3Args() {
+        // GRAPH B //
+
+        // Image of graph: https://ibb.co/y8dVc3v
+
+        AcyclicGraph graphB = new AcyclicGraph(13);
+        graphB.addEdge(0,1);
+        graphB.addEdge(0,2);
+        graphB.addEdge(1, 3);
+        graphB.addEdge(3, 5);
+        graphB.addEdge(2, 4);
+        graphB.addEdge(4, 6);
+        graphB.addEdge(4, 7);
+        graphB.addEdge(6, 9);
+        graphB.addEdge(9, 8);
+        graphB.addEdge(9, 12);
+        graphB.addEdge(9, 10);
+        graphB.addEdge(10, 11);
+
+        // NOTE: VALUE OF EACH NODE IN THE IMAGE IS VALUE-1 IN MY PROGRAM
+        // NOTE: VALUE OF EACH NODE IN THE IMAGE IS VALUE-1 IN MY PROGRAM
+        // NOTE: VALUE OF EACH NODE IN THE IMAGE IS VALUE-1 IN MY PROGRAM
+
+                                        // function call  // expected result
+        assertArrayEquals(graphB.findLCA(new int[]{8, 11, 7}), new int[]{4});
+        assertArrayEquals(graphB.findLCA(new int[]{12, 11, 10}), new int[]{9});
+        assertArrayEquals(graphB.findLCA(new int[]{11, 9, 6}), new int[]{6});
+        assertArrayEquals(graphB.findLCA(new int[]{5, 6, 7}), new int[]{0});
+        assertArrayEquals(graphB.findLCA(new int[]{12, 7, 2}), new int[]{2});
+        assertArrayEquals(graphB.findLCA(new int[]{12, 9, 0}), new int[]{0});
+        assertArrayEquals(graphB.findLCA(new int[]{0, 1, 2}), new int[]{0});
     }
 }
