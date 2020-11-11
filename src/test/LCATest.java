@@ -218,4 +218,36 @@ public class LCATest {
         graphC.addEdge(1, 2);
         graphC.topSort();
     }
+
+    @Test
+    public void testValidArgumentsInserted() {
+        AcyclicGraph graphC = new AcyclicGraph(6, false);
+        // acyclic graph
+        graphC.addEdge(5, 0);
+        graphC.addEdge(5, 2);
+        graphC.addEdge(2, 3);
+        graphC.addEdge(3, 1);
+        graphC.addEdge(4, 1);
+        graphC.addEdge(4, 0);
+        int [] args = {3, 0};
+        graphC.findLCA(args);
+        // findLCA() itself will check if the input arguments are valid. If no error is thrown, then
+        // this test is successful;
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testInvalidArgumentsInserted() {
+        AcyclicGraph graphC = new AcyclicGraph(6, false);
+        // acyclic graph
+        graphC.addEdge(5, 0);
+        graphC.addEdge(5, 2);
+        graphC.addEdge(2, 3);
+        graphC.addEdge(3, 1);
+        graphC.addEdge(4, 1);
+        graphC.addEdge(4, 0);
+        int [] args = {99, -1};
+        graphC.findLCA(args);
+        // findLCA() itself will check if the input arguments are valid. As they are not valid, an
+        // IllegalArgumentException will be thrown
+    }
 }
