@@ -1,4 +1,4 @@
-# Lowest Common Ancestor on Binary Search Tree (Java)
+# Lowest Common Ancestor on Binary Search Tree & Directed Acyclic Graph(Java)
 * All tests passing
 * Code coverage 100%
 
